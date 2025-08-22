@@ -1,12 +1,17 @@
-import React from "react";
-import { Busca } from "./components/Busca";
-import { ClimaAtual } from "./components/ClimaAtual";
-import { Previsao } from "./components/Previsao";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Busca from "./components/Busca";
+import ClimaAtual from "./components/ClimaAtual";
+import Previsao from "./components/Previsao";
 
 function App() {
+  const [cidade, setCidade] = useState("");
+  const [clima, setClima] = useState(null);
+  const [previsao, setPrevisao] = useState([]);
+
   return (
     <div>
-      <h1>Condições climáticas</h1>
+      <Titulo>Condições Climáticas</Titulo>
       <Busca />
       <ClimaAtual />
       <Previsao />
