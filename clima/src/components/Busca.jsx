@@ -1,7 +1,13 @@
-export function Busca() {
+export function Busca({ cidade, setCidade, buscarClima }) {
   return (
-    <div>
-      <h2>Busca de Clima</h2>
-    </div>
+    <>
+      <input
+        type="text"
+        value={cidade}
+        onChange={(e) => setCidade(e.target.value)}
+        placeholder="Digite uma cidade"
+      />
+      <button onClick={buscarClima}>Buscar</button>
+    </>
   );
 }
