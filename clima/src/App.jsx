@@ -17,7 +17,12 @@ function App() {
         `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`
       );
 
+      const respostaPrevisao = await axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`
+      );
+
       setClima(respostaClima.data);
+      setPrevisao(respostaPrevisao.data.list.slice(0, 5)); // Obter as 5 primeiras previsões
     } catch (error) {
       console.error("Erro ao buscar dados do clima:", error);
     }
@@ -30,7 +35,7 @@ function App() {
       <h1>Condições Climáticas</h1>
       <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima} />
       {clima && <ClimaAtual clima={clima} />}
-      <Previsao />
+      {previsao.length > 0 && <Previsao previsoes={previsao} />}
     </div>
   );
 }
