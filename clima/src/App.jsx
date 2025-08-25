@@ -29,7 +29,7 @@ function App() {
     <div>
       <h1>Condições Climáticas</h1>
       <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima} />
-      <ClimaAtual />
+      {clima && <ClimaAtual clima={clima} />}
       <Previsao />
     </div>
   );
