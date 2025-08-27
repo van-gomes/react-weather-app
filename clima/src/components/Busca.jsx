@@ -2,7 +2,7 @@ import styles from "./Busca.module.css";
 
 export function Busca({ cidade, setCidade, buscarClima }) {
   return (
-    <>
+    <div className={styles.wrapper}>
       <input
         type="text"
         value={cidade}
@@ -13,6 +13,6 @@ export function Busca({ cidade, setCidade, buscarClima }) {
       <button onClick={buscarClima} className={styles.botaoBuscar}>
         Buscar
       </button>
-    </>
+    </div>
   );
 }

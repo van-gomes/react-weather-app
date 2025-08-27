@@ -1,18 +1,20 @@
 .climaInfo {
-    text-align: center;
+    color: #ffffff;
 }
 
 .climaInfo h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin: 10px 0 8px;
 }
 
 .climaInfo img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 10px;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 6px;
 }
 
 .climaInfo p {
-    margin-bottom: 5px;
+    margin: 2px 0;
+    font-size: 0.95rem;
 }
