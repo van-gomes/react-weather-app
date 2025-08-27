@@ -1,3 +1,5 @@
+import styles from "./Busca.module.css";
+
 export function Busca({ cidade, setCidade, buscarClima }) {
   return (
     <>
@@ -6,8 +8,11 @@ export function Busca({ cidade, setCidade, buscarClima }) {
         value={cidade}
         onChange={(e) => setCidade(e.target.value)}
         placeholder="Digite uma cidade"
+        className={styles.inputCidade}
       />
-      <button onClick={buscarClima}>Buscar</button>
+      <button onClick={buscarClima} className={styles.botaoBuscar}>
+        Buscar
+      </button>
     </>
   );
 }
