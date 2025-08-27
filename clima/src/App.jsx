@@ -3,8 +3,9 @@ import axios from "axios";
 import { Busca } from "./components/Busca";
 import { ClimaAtual } from "./components/ClimaAtual";
 import { Previsao } from "./components/Previsao";
+import styles from "./App.module.css";
 
-function App() {
+export function App() {
   const [cidade, setCidade] = useState("");
   const [clima, setClima] = useState(null);
   const [previsao, setPrevisao] = useState([]);
@@ -26,30 +27,51 @@ function App() {
   const buscarClima = async () => {
     try {
       const respostaClima = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`
-      );
-      const respostaPrevisao = await axios.get(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`
+        `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
+          cidade
+        )}&appid=${apiKey}&units=metric&lang=pt_br`
       );
 
-      respostaClima.data.main.temp =
-        (respostaClima.data.main.temp - 32) * (5 / 9);
+      const respostaPrevisao = await axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(
+          cidade
+        )}&appid=${apiKey}&units=metric&lang=pt_br`
+      );
+
+      // IMPORTANTE: 'units=metric' já retorna °C. Não converta novamente.
+      // Se quiser converter manualmente, remova 'units=metric' e faça a conversão.
+      // respostaClima.data.main.temp = (respostaClima.data.main.temp - 32) * (5 / 9);
 
       setClima(respostaClima.data);
-      setPrevisao(respostaPrevisao.data.list.slice(0, 5)); // Obter as 5 primeiras previsões
+      setPrevisao(respostaPrevisao.data.list.slice(0, 5));
     } catch (error) {
       console.error("Erro ao buscar dados do clima:", error);
     }
   };
 
   return (
-    <div>
-      <h1>Condições Climáticas</h1>
-      <Busca cidade={cidade} setCidade={setCidade} buscarClima={buscarClima} />
-      {clima && <ClimaAtual clima={clima} />}
-      {previsao.length > 0 && <Previsao previsoes={previsao} />}
+    <div className={styles.appContainer}>
+      <h1 className={styles.titulo}>Condições Climáticas</h1>
+
+      <div className={styles.bloco}>
+        <Busca
+          cidade={cidade}
+          setCidade={setCidade}
+          buscarClima={buscarClima}
+        />
+      </div>
+
+      {clima && (
+        <div className={styles.bloco}>
+          <ClimaAtual clima={clima} />
+        </div>
+      )}
+
+      {previsao.length > 0 && (
+        <div className={styles.bloco}>
+          <Previsao previsoes={previsao} />
+        </div>
+      )}
     </div>
   );
 }
-
-export default App;
