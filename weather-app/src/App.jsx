@@ -1,71 +1,71 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Busca } from "./components/Busca";
-import { ClimaAtual } from "./components/ClimaAtual";
-import { Previsao } from "./components/Previsao";
+import { Search } from "./components/Search";
+import { CurrentWeather } from "./components/CurrentWeather";
+import { Forecast } from "./components/Forecast";
 import styles from "./App.module.css";
 
 export function App() {
-  const [cidade, setCidade] = useState("");
-  const [clima, setClima] = useState(null);
-  const [previsao, setPrevisao] = useState([]);
+  const [city, setCity] = useState("");
+  const [weather, setWeather] = useState(null);
+  const [forecast, setForecast] = useState([]);
 
   const apiKey = import.meta.env.VITE_API_KEY || "";
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(async (position) => {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
-      const resposta = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=pt_br`
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      const response = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric&lang=pt_br`
       );
-      setCidade(resposta.data.name);
-      setClima(resposta.data);
+      setCity(response.data.name);
+      setWeather(response.data);
     });
   }, [apiKey]);
 
-  const buscarClima = async () => {
+  const fetchWeatherData = async () => {
     try {
-      const climaResp = await axios.get(
+      const weatherResponse = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
-          cidade
+          city
         )}&appid=${apiKey}&units=metric&lang=pt_br`
       );
-      const prevResp = await axios.get(
+      const forecastResponse = await axios.get(
         `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(
-          cidade
+          city
         )}&appid=${apiKey}&units=metric&lang=pt_br`
       );
 
-      setClima(climaResp.data);
-      setPrevisao(prevResp.data.list.slice(0, 5));
-    } catch (e) {
-      console.error("Erro ao buscar dados do clima:", e);
+      setWeather(weatherResponse.data);
+      setForecast(forecastResponse.data.list.slice(0, 5));
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
     }
   };
 
   return (
     <div className={styles.page}>
       <div className={styles.hero}>
-        <h1 className={styles.titulo}>Condições Climáticas</h1>
+        <h1 className={styles.title}>Weather Conditions</h1>
 
-        <div className={styles.bloco}>
-          <Busca
-            cidade={cidade}
-            setCidade={setCidade}
-            buscarClima={buscarClima}
+        <div className={styles.block}>
+          <Search
+            city={city}
+            setCity={setCity}
+            fetchWeatherData={fetchWeatherData}
           />
         </div>
 
-        {clima && (
-          <div className={styles.bloco}>
-            <ClimaAtual clima={clima} />
+        {weather && (
+          <div className={styles.block}>
+            <CurrentWeather weather={weather} />
           </div>
         )}
 
-        {previsao.length > 0 && (
-          <div className={styles.bloco}>
-            <Previsao previsoes={previsao} />
+        {forecast.length > 0 && (
+          <div className={styles.block}>
+            <Forecast forecasts={forecast} />
           </div>
         )}
       </div>

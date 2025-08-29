@@ -1,29 +1,29 @@
-.previsaoContainer {
+.forecastContainer {
     margin-top: 16px;
     background: transparent;
     color: #ffffff;
 }
 
-.previsaoContainer h4 {
+.forecastContainer h4 {
     text-align: center;
     margin-bottom: 8px;
     color: #ffffff;
 }
 
-.previsaoContainer ul {
+.forecastContainer ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.previsaoContainer li {
+.forecastContainer li {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 6px 0;
 }
 
-.previsaoContainer li img {
+.forecastContainer li img {
     width: 32px;
     height: 32px;
 }
