@@ -2,7 +2,7 @@ import styles from "./CurrentWeather.module.css";
 
 export function CurrentWeather({ weather }) {
   return (
-    <div className={styles.climaInfo}>
+    <div className={styles.weatherInfo}>
       <h3>{weather.name}</h3>
       <img
         src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}

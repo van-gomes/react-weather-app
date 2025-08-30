@@ -1,20 +1,21 @@
-.climaInfo {
-    color: #ffffff;
+.weatherInfo {
+    color: #fff;
 }
 
-.climaInfo h3 {
+.weatherInfo h3 {
     font-size: 1.125rem;
+    /* ~18px */
     font-weight: 700;
     margin: 10px 0 8px;
 }
 
-.climaInfo img {
+.weatherInfo img {
     width: 64px;
     height: 64px;
     margin-bottom: 6px;
 }
 
-.climaInfo p {
+.weatherInfo p {
     margin: 2px 0;
-    font-size: 0.95rem;
+    font-size: .95rem;
 }

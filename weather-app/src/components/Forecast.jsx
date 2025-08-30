@@ -1,4 +1,3 @@
-// Forecast.jsx
 import styles from "./Forecast.module.css";
 
 export const Forecast = ({ forecasts }) => {
@@ -7,7 +6,7 @@ export const Forecast = ({ forecasts }) => {
   }
 
   return (
-    <div className={styles.forecastContainer}>
+    <div className={styles.forecastCard}>
       <h4>Forecast for the next hours</h4>
       <ul>
         {forecasts.map((item, index) => (

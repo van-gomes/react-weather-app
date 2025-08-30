@@ -1,29 +1,43 @@
-.forecastContainer {
-    margin-top: 16px;
-    background: transparent;
-    color: #ffffff;
+.forecastCard {
+    width: 360px;
+    margin: 16px auto 0;
+    background: #ffffff;
+    color: #333;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    padding: 10px 0;
 }
 
-.forecastContainer h4 {
+.forecastCard h4 {
     text-align: center;
-    margin-bottom: 8px;
-    color: #ffffff;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 600;
 }
 
-.forecastContainer ul {
+.forecastCard ul {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
-.forecastContainer li {
+.forecastCard li {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 6px 0;
+    padding: 10px 14px;
+    border-top: 1px solid #e5e7eb;
+    background: #fff;
+    font-size: 0.95rem;
 }
 
-.forecastContainer li img {
-    width: 32px;
-    height: 32px;
+.forecastCard li:first-child {
+    border-top: none;
+}
+
+.forecastCard li img {
+    width: 28px;
+    height: 28px;
 }
