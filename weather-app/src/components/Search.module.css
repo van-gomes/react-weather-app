@@ -4,8 +4,8 @@
     gap: 8px;
 }
 
-.cityInput {
-    width: 360px;
+.inputCity {
+    width: 60%;
     padding: 10px 14px;
     border: none;
     border-radius: 6px;
@@ -15,11 +15,7 @@
     outline: none;
 }
 
-.cityInput::placeholder {
-    color: #6b7280;
-}
-
-.cityInput:focus {
+.inputCity:focus {
     border: 1px solid #007bff;
 }
 

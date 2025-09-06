@@ -2,6 +2,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     text-align: center;
     background: linear-gradient(180deg, #79d0f3 0%, #1ea0d8 50%, #0e78b3 100%);
