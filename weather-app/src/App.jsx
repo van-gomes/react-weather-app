@@ -47,7 +47,7 @@ export function App() {
   return (
     <div className={styles.page}>
       <div className={styles.hero}>
-        <h1 className={styles.title}>Weather Conditions</h1>
+        <h1 className={styles.title}>Condições Climáticas</h1>
 
         <div className={styles.block}>
           <Search

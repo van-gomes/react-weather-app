@@ -7,11 +7,11 @@ export function Search({ city, setCity, fetchWeatherData }) {
         type="text"
         value={city}
         onChange={(e) => setCity(e.target.value)}
-        placeholder="Enter a city"
+        placeholder="Digite uma cidad"
         className={styles.inputCity}
       />
       <button onClick={fetchWeatherData} className={styles.searchButton}>
-        Search
+        Buscar
       </button>
     </div>
   );

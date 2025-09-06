@@ -7,7 +7,7 @@ export const Forecast = ({ forecasts }) => {
 
   return (
     <div className={styles.forecastCard}>
-      <h4>Forecast for the next hours</h4>
+      <h4>Previsão para as próximas horas</h4>
       <ul>
         {forecasts.map((item, index) => (
           <li key={index}>
